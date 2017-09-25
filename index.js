@@ -170,7 +170,7 @@ App.get('/', function(req, res){
                     location: schedule_location,
                     title: schedule_title
                 };
-                res.render('index', {imgs : imgs, maps: {lat: config.maps.lat, lng: config.maps.lng, zoom: config.maps.zoom}, location: schedule_location, title: schedule_title});
+                res.render('index', obj);
             });
 
         })
