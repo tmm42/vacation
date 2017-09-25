@@ -14,17 +14,24 @@
 
 <header>
     <h1>Island</h1>
-    <h2>30.09. - 13.10.2017</h2>
+    <h3>30.09. - 13.10.2017</h3>
     <span class="location-title">Aktueller Ort: <%= title %></span>
     <div id="map"></div>
 </header>
 
-<div class="image-grid">
-    <div class="grid-sizer"></div>
-    <% for(var i = 0; i < imgs.length; i++) {%>
-    <div class="img-item"><img src="<%= imgs[i] %>"></div>
+<article>
+    <% if (imgs.length) { %>
+    <h2>Fotos</h2>
+    <div class="image-grid">
+
+        <div class="grid-sizer"></div>
+        <% for(var i = 0; i < imgs.length; i++) {%>
+        <div class="img-item"><img src="<%= imgs[i] %>"></div>
+        <% } %>
+    </div>
     <% } %>
-</div>
+</article>
+
 
 <footer>
     &copy; 2017 Timm Kleemann
@@ -37,7 +44,7 @@
 <script>
     function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: <%= maps.lat %> , lng: <%= maps.lng %> },
+            center: {lat: <%= location.lat %> , lng: <%= location.lng %> },
             zoom: <%= maps.zoom %>
         });
 
@@ -48,19 +55,24 @@
         });
     }
 
-    var elem = document.querySelector('.image-grid');
-    var msnry = new Masonry( elem, {
-        // options
-        itemSelector: '.img-item',
-        columnWidth: '.grid-sizer',
-        percentPosition: true,
-        gutter: 10
-    });
+    var imgs = <%-JSON.stringify(imgs)%>;
 
-    imagesLoaded(elem).on( 'progress', function() {
-        // layout Masonry after each image loads
-        msnry.layout();
-    });
+    if(imgs.length) {
+        var elem = document.querySelector('.image-grid');
+        var msnry = new Masonry( elem, {
+            // options
+            itemSelector: '.img-item',
+            columnWidth: '.grid-sizer',
+            percentPosition: true,
+            gutter: 10
+        });
+
+        imagesLoaded(elem).on( 'progress', function() {
+            // layout Masonry after each image loads
+            msnry.layout();
+        });
+    }
+
 
 </script>
 

@@ -1,32 +1,51 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
-#map {
-  height: 750px;
-  width: 75%;
-  margin: 25px auto 75px; }
-
 /* Optional: Makes the sample page fill the window. */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Source Sans Pro',Verdana,Geneva,sans-serif;
-  font-weight: 300; }
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #424242; }
+
+h1, h2, h3 {
+  text-align: center; }
 
 h1 {
-  text-align: center;
   font-size: 4.5em;
   margin: 25px 0 0; }
 
 h2 {
-  text-align: center;
+  font-size: 2.0em;
+  font-weight: 300; }
+
+h3 {
   font-size: 1.2em;
   font-weight: 300;
   margin: 0 0 15px; }
 
 .location-title {
   display: inherit;
-  text-align: center;
-  margin-bottom: 75px; }
+  text-align: center; }
+  @media screen and (max-width: 767px) {
+    .location-title {
+      margin-bottom: 25px; } }
+  @media screen and (min-width: 768px) {
+    .location-title {
+      margin-bottom: 75px; } }
+
+@media screen and (max-width: 767px) {
+  #map {
+    width: calc(100% - 30px);
+    height: 65vh;
+    margin: 0 15px 50px; } }
+@media screen and (min-width: 768px) {
+  #map {
+    height: 750px;
+    width: 75%;
+    margin: 25px auto 75px; } }
 
 .image-grid {
   margin: 0 15px 75px;
@@ -34,10 +53,15 @@ h2 {
   .image-grid .grid-sizer {
     width: calc((100% / 3) - 10px); }
   .image-grid .img-item {
-    width: calc((100% / 3) - 10px);
-    list-style: none;
-    margin-bottom: 10px;
-    padding: 0; }
+    margin-bottom: 10px; }
+    @media screen and (max-width: 767px) {
+      .image-grid .img-item {
+        width: 100%;
+        padding: 0; } }
+    @media screen and (min-width: 768px) {
+      .image-grid .img-item {
+        width: calc((100% / 3) - 10px);
+        padding: 0 5px; } }
     .image-grid .img-item img {
       width: 100%;
       height: auto; }
@@ -47,6 +71,6 @@ footer {
   font-size: 0.8em;
   font-weight: 400;
   margin: 35px 0;
-  color: grey; }
+  color: #818181; }
 
 /*# sourceMappingURL=style.css.map */

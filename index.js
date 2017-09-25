@@ -137,7 +137,6 @@ App.get('/', function(req, res){
 
     for(var i = 0; i < schedule.length; i++) {
         if(Moment(schedule[i].date).date() + Moment(schedule[i].date).month()  === Moment().date() + Moment().month()) {
-            console.log("Match!");
             schedule_title = schedule[i].title;
             schedule_location = schedule[i].location;
         }
