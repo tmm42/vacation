@@ -33,7 +33,15 @@ App.get('/', function(req, res){
         "lng": 42
     };
 
-    if(Moment() > Moment(schedule[schedule.length - 1].date) && Moment() < Moment(schedule[0].date)) {
+    /*
+
+    console.log(Moment() < Moment(schedule[0].date));
+    console.log(Moment() > Moment(schedule[schedule.length - 1].date));
+    console.log(Moment() < Moment(schedule[0].date) || Moment() > Moment(schedule[schedule.length - 1].date))
+
+    */
+
+    if(Moment() < Moment(schedule[0].date) || Moment() > Moment(schedule[schedule.length - 1].date) ) {
         schedule_title = null;
         schedule_location = {
             "lat": config.maps.lat,
