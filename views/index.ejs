@@ -15,7 +15,9 @@
 <header>
     <h1>Island</h1>
     <h3>30.09. - 13.10.2017</h3>
+    <% if (title) { %>
     <span class="location-title">Aktueller Ort: <%= title %></span>
+    <% } %>
     <div id="map"></div>
 </header>
 
