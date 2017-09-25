@@ -1,0 +1,71 @@
+<!doctype>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Island</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="client/style.css">
+
+</head>
+<body>
+
+<header>
+    <h1>Island</h1>
+    <h2>30.09. - 13.10.2017</h2>
+    <span class="location-title">Aktueller Ort: <%= title %></span>
+    <div id="map"></div>
+</header>
+
+<div class="image-grid">
+    <div class="grid-sizer"></div>
+    <% for(var i = 0; i < imgs.length; i++) {%>
+    <div class="img-item"><img src="<%= imgs[i] %>"></div>
+    <% } %>
+</div>
+
+<footer>
+    &copy; 2017 Timm Kleemann
+</footer>
+
+
+<script src="client/masonry.pkgd.min.js"></script>
+<script src="client/imagesloaded.pkgd.min.js"></script>
+
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: <%= maps.lat %> , lng: <%= maps.lng %> },
+            zoom: <%= maps.zoom %>
+        });
+
+        var marker = new google.maps.Marker({
+            position: {lat: <%= location.lat %>, lng: <%= location.lng %>},
+            map: map,
+            title: "<%= title %>"
+        });
+    }
+
+    var elem = document.querySelector('.image-grid');
+    var msnry = new Masonry( elem, {
+        // options
+        itemSelector: '.img-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true,
+        gutter: 10
+    });
+
+    imagesLoaded(elem).on( 'progress', function() {
+        // layout Masonry after each image loads
+        msnry.layout();
+    });
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= maps.apiKey %>&callback=initMap" async defer></script>
+
+
+</body>
+</html>

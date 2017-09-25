@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400');
+#map {
+  height: 750px;
+  width: 75%;
+  margin: 25px auto 75px;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family:'Source Sans Pro',Verdana,Geneva,sans-serif;
+  font-weight: 300;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4.5em;
+  margin: 25px 0 0;
+
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 300;
+  margin: 0 0 15px;
+}
+
+.location-title {
+  display: inherit;
+  text-align: center;
+  margin-bottom: 75px;
+}
+
+.image-grid {
+  margin: 0 15px 75px;
+  padding: 0;
+
+  .grid-sizer {
+    width: calc((100% / 3) - 10px);
+  }
+  .img-item {
+    width: calc((100% / 3) - 10px);
+    list-style: none;
+    margin-bottom: 10px;
+    padding: 0;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+
+footer {
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: 400;
+  margin: 35px 0;
+  color: grey;
+}

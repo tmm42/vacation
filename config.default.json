@@ -1,0 +1,12 @@
+{
+  "dropbox": {
+    "accessToken": "yourDevToken"
+  },
+  "port": 61000,
+  "maps": {
+    "lat": 1,
+    "lng": 1,
+    "zoom": 7,
+    "apiKey": "yourMapsApiKey"
+  }
+}
