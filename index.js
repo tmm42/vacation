@@ -5,9 +5,9 @@ const Q = require('q');
 const config = require('./config.json');
 
 const App = Express();
-const Server = App.listen(61000);
+const Server = App.listen(config.port);
 
-console.log("Server initialized, listen to port " + 61000);
+console.log("Server initialized, listen to port " + config.port);
 
 App.set('views', __dirname + "/views");
 App.set('view engine', 'ejs');
