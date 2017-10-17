@@ -50,11 +50,19 @@
             zoom: <%= maps.zoom %>
         });
 
+        var ctaLayer = new google.maps.KmlLayer({
+            url: 'https://timmkleemann.de/IslandRoute.kml',
+            map: map
+        });
+
         var marker = new google.maps.Marker({
             position: {lat: <%= location.lat %>, lng: <%= location.lng %>},
             map: map,
             title: "<%= title %>"
         });
+
+
+
     }
 
     var imgs = <%-JSON.stringify(imgs)%>;
