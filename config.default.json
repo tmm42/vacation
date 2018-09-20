@@ -8,5 +8,9 @@
     "lng": 1,
     "zoom": 7,
     "apiKey": "yourMapsApiKey"
+  },
+  "meta": {
+    "title": "Travel Title",
+    "date_range": "Travel start and end dates"
   }
 }
