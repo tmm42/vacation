@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Island</title>
+    <title><%= meta.title %></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,8 +13,8 @@
 <body>
 
 <header>
-    <h1>Island</h1>
-    <h3>30.09. - 13.10.2017</h3>
+    <h1><%= meta.title %></h1>
+    <h3><%= meta.date_range %></h3>
     <% if (title) { %>
     <span class="location-title">Aktueller Ort: <%= title %></span>
     <% } %>
@@ -24,8 +24,8 @@
 <article>
     <% if (imgs.length) { %>
     <h2>Fotos</h2>
+    <span id="resizer">+</span>
     <div class="image-grid">
-
         <div class="grid-sizer"></div>
         <% for(var i = 0; i < imgs.length; i++) {%>
         <div class="img-item"><img src="<%= imgs[i] %>"></div>
@@ -36,7 +36,7 @@
 
 
 <footer>
-    &copy; 2017 Timm Kleemann
+    &copy; 2018 Timm Kleemann
 </footer>
 
 
@@ -50,10 +50,13 @@
             zoom: <%= maps.zoom %>
         });
 
+        /**
         var ctaLayer = new google.maps.KmlLayer({
-            url: 'https://timmkleemann.de/IslandRoute.kml',
+            url: 'https://domain.de/route.kml',
             map: map
         });
+
+         **/
 
         var marker = new google.maps.Marker({
             position: {lat: <%= location.lat %>, lng: <%= location.lng %>},
@@ -83,11 +86,28 @@
         });
     }
 
+    document.getElementById("resizer").addEventListener('mousedown', function(){
+        var currentSize = document.getElementsByClassName('grid-sizer')[0].clientWidth;
+        var itemsPerRow = Math.round(window.innerWidth / (currentSize + 10));
+
+        if(itemsPerRow <= 1) {
+            itemsPerRow = 4;
+        } else {
+            itemsPerRow -= 1;
+        }
+        document.getElementsByClassName('grid-sizer')[0].style.width = "calc((100% / " + itemsPerRow + ") - 10px)";
+        var items = document.querySelectorAll('.img-item');
+        for(var i = 0; i < items.length; i++) {
+            items[i].style.width = "calc((100% / " + itemsPerRow + ") - 10px)";
+            msnry.layout();
+        }
+
+    })
+
 
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= maps.apiKey %>&callback=initMap" async defer></script>
-
 
 </body>
 </html>

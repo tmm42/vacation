@@ -62,12 +62,12 @@ App.get('/', function(req, res){
     dbx.filesListFolder({path: ''})
         .then(function(response) {
 
+            console.log(response);
             var promises = [];
 
 
                 for(var e in response.entries) {
                     promises.push(dbx.sharingCreateSharedLink({path: response.entries[e].path_display}).then(function(response){
-
                         imgs.push("https://dl.dropboxusercontent.com" + response.url.substr(23));
                     }).catch(function(error){
                         console.log(error);
@@ -94,7 +94,11 @@ App.get('/', function(req, res){
                             apiKey: config.maps.apiKey,
                         },
                         location: schedule_location,
-                        title: schedule_title
+                        title: schedule_title,
+                        meta: {
+                            title: config.meta.title,
+                            data_range: config.meta.date_range
+                        }
                     };
                     res.render('index', obj);
                 });

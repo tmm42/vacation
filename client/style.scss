@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400');
 
+$contrast: rgba(148, 124, 176, 1);
+$grey: rgba(189, 195, 199, 1);
+$white: rgba(255,255,255,1);
+$black: #424242;
+
 /* Optional: Makes the sample page fill the window. */
 html, body {
   height: 100%;
@@ -9,7 +14,7 @@ html, body {
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #424242;
+  color: $black;
 }
 
 h1, h2, h3 {
@@ -67,7 +72,7 @@ h3 {
   padding: 0;
 
   .grid-sizer {
-    width: calc((100% / 3) - 10px);
+    width: calc((100% / 2) - 10px);
   }
   .img-item {
     margin-bottom: 10px;
@@ -78,7 +83,7 @@ h3 {
     }
 
     @media screen and (min-width: 768px) {
-      width: calc((100% / 3) - 10px);
+      width: calc((100% / 2) - 10px);
       padding: 0 5px;
     }
 
@@ -88,6 +93,24 @@ h3 {
       width: 100%;
       height: auto;
     }
+  }
+}
+
+span#resizer {
+  font-size: 42px;
+  text-align: center;
+  margin: 0 auto 24px;
+  display: block;
+  border: 1px solid $grey;
+  width: 50px;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: $white;
+
+  &:hover {
+    background-color: $grey;
+    color: $white;
+    transition: all linear 120ms;
   }
 }
 
