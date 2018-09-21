@@ -12,6 +12,7 @@
   },
   "meta": {
     "title": "Travel Title",
-    "date_range": "Travel start and end dates"
+    "date_range": "Travel start and end dates",
+    "latest_first": true
   }
 }
