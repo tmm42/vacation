@@ -91,7 +91,7 @@ App.get('/', function(req, res){
                         title: schedule_title,
                         meta: {
                             title: config.meta.title,
-                            data_range: config.meta.date_range
+                            date_range: config.meta.date_range
                         }
                     };
                     res.render('index', obj);
