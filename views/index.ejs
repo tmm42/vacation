@@ -27,7 +27,7 @@
     <span id="resizer">+</span>
     <div class="image-grid">
         <div class="grid-sizer"></div>
-        <% for(var i = 0; i < imgs.length; i++) {%>
+        <% for(var i = 0; i < imgs.length; i++) { %>
         <div class="img-item"><img src="<%= imgs[i] %>"></div>
         <% } %>
     </div>
@@ -45,34 +45,32 @@
 
 <script>
     function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+        let overlay = "<%= maps.overlay %>"
+        let map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: <%= location.lat %> , lng: <%= location.lng %> },
             zoom: <%= maps.zoom %>
         });
 
-        /**
-        var ctaLayer = new google.maps.KmlLayer({
-            url: 'https://domain.de/route.kml',
-            map: map
-        });
+        if (overlay) {
+            console.log(overlay)
+            let ctaLayer = new google.maps.KmlLayer({
+                url: overlay,
+                map: map
+            });
+        }
 
-         **/
-
-        var marker = new google.maps.Marker({
+        let marker = new google.maps.Marker({
             position: {lat: <%= location.lat %>, lng: <%= location.lng %>},
             map: map,
             title: "<%= title %>"
         });
-
-
-
     }
 
-    var imgs = <%-JSON.stringify(imgs)%>;
+    let imgs = <%- JSON.stringify(imgs) %>;
 
-    if(imgs.length) {
-        var elem = document.querySelector('.image-grid');
-        var msnry = new Masonry( elem, {
+    if (imgs.length) {
+        let elem = document.querySelector('.image-grid');
+        let msnry = new Masonry(elem, {
             // options
             itemSelector: '.img-item',
             columnWidth: '.grid-sizer',
@@ -80,29 +78,30 @@
             gutter: 10
         });
 
-        imagesLoaded(elem).on( 'progress', function() {
+        imagesLoaded(elem).on('progress', function () {
             // layout Masonry after each image loads
             msnry.layout();
         });
+
+
+        document.getElementById("resizer").addEventListener('mousedown', function () {
+            let currentSize = document.getElementsByClassName('grid-sizer')[0].clientWidth;
+            let itemsPerRow = Math.round(window.innerWidth / (currentSize + 10));
+
+            if (itemsPerRow <= 1) {
+                itemsPerRow = 4;
+            } else {
+                itemsPerRow -= 1;
+            }
+            document.getElementsByClassName('grid-sizer')[0].style.width = "calc((100% / " + itemsPerRow + ") - 10px)";
+            let items = document.querySelectorAll('.img-item');
+            for (let i = 0; i < items.length; i++) {
+                items[i].style.width = "calc((100% / " + itemsPerRow + ") - 10px)";
+                msnry.layout();
+            }
+
+        })
     }
-
-    document.getElementById("resizer").addEventListener('mousedown', function(){
-        var currentSize = document.getElementsByClassName('grid-sizer')[0].clientWidth;
-        var itemsPerRow = Math.round(window.innerWidth / (currentSize + 10));
-
-        if(itemsPerRow <= 1) {
-            itemsPerRow = 4;
-        } else {
-            itemsPerRow -= 1;
-        }
-        document.getElementsByClassName('grid-sizer')[0].style.width = "calc((100% / " + itemsPerRow + ") - 10px)";
-        var items = document.querySelectorAll('.img-item');
-        for(var i = 0; i < items.length; i++) {
-            items[i].style.width = "calc((100% / " + itemsPerRow + ") - 10px)";
-            msnry.layout();
-        }
-
-    })
 
 
 </script>

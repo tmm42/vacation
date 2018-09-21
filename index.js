@@ -92,6 +92,7 @@ App.get('/', function(req, res){
                             lng: config.maps.lng,
                             zoom: config.maps.zoom,
                             apiKey: config.maps.apiKey,
+                            overlay: config.maps.overlay
                         },
                         location: schedule_location,
                         title: schedule_title,
