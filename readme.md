@@ -1,5 +1,5 @@
 # Vacation Tracker
-___
+
 To get the app working you need
 - a dropbox account
 - a google maps api key
@@ -54,11 +54,18 @@ After that you need to specify your travel schedule in `schedule.json` like this
   }
 ]
 ```
+### Install & Run App
+To install the app
 
-To install and run app type
 ```bash
 npm install
+```
+
+To finally run the app type:
+```bash
 npm start
 ```
+
+Visit `http://localhost:61000`
 
 
