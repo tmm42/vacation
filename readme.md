@@ -9,7 +9,7 @@ To get the app working you need
 1. Generate an Dropbox API access token
 1. Generate an Google Maps for JS API access token
 
-Now you need to set up your `config.json:
+Now you need to set up your `config.json`:
 
 ```json
 {
