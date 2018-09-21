@@ -68,4 +68,6 @@ npm start
 
 Visit `http://localhost:61000`
 
+### Updating Pictures
 
+The app will display all pictures in your defined dropbox folder. Just upload them and they will show up the next time you visit the page. 
