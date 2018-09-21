@@ -1,5 +1,5 @@
-## Vacation Tracker
---
+# Vacation Tracker
+___
 To get the app working you need
 - a dropbox account
 - a google maps api key
