@@ -21,7 +21,7 @@ Now you need to set up your `config.json:
     "lat": 1,
     "lng": 1,
     "zoom": 7,
-    "apiKey": "yourMapsApiKey",
+    "apiKey": "your previously generated google maps api token",
     "overlay": null
   },
   "meta": {
@@ -32,6 +32,7 @@ Now you need to set up your `config.json:
 ```
 
 After that you need to specify your travel schedule in `schedule.json` like this:
+
 
 ```json
 [
@@ -52,4 +53,12 @@ After that you need to specify your travel schedule in `schedule.json` like this
     }
   }
 ]
-``` 
+```
+
+To install and run app type
+```bash
+npm install
+npm start
+```
+
+
