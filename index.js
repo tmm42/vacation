@@ -22,13 +22,13 @@ Moment().locale();
 App.get('/', function(req, res){
 
 
-    var dbx = new Dropbox({ accessToken: config.dropbox.accessToken });
-    var imgs = [];
+    let dbx = new Dropbox({ accessToken: config.dropbox.accessToken });
+    let imgs = [];
 
-    var schedule = require('./schedule.json');
+    let schedule = require('./schedule.json');
 
-    var schedule_title = "42";
-    var schedule_location = {
+    let schedule_title = "42";
+    let schedule_location = {
         "lat": 42,
         "lng": 42
     };
@@ -48,7 +48,7 @@ App.get('/', function(req, res){
             "lng": config.maps.lng
         }
     } else {
-        for(var i = 0; i < schedule.length; i++) {
+        for(let i = 0; i < schedule.length; i++) {
             if(Moment(schedule[i].date).date() + Moment(schedule[i].date).month()  === Moment().date() + Moment().month()) {
                 schedule_title = schedule[i].title;
                 schedule_location = schedule[i].location;
@@ -56,17 +56,10 @@ App.get('/', function(req, res){
         }
     }
 
-
-
-
     dbx.filesListFolder({path: ''})
         .then(function(response) {
-
-            console.log(response);
-            var promises = [];
-
-
-                for(var e in response.entries) {
+            let promises = [];
+                for(let e in response.entries) {
                     promises.push(dbx.sharingCreateSharedLink({path: response.entries[e].path_display}).then(function(response){
                         imgs.push("https://dl.dropboxusercontent.com" + response.url.substr(23));
                     }).catch(function(error){
@@ -85,7 +78,7 @@ App.get('/', function(req, res){
                         return 0;
                     });
 
-                    var obj = {
+                    let obj = {
                         imgs : imgs,
                         maps: {
                             lat: config.maps.lat,
@@ -103,8 +96,6 @@ App.get('/', function(req, res){
                     };
                     res.render('index', obj);
                 });
-
-
         })
         .catch(function(error) {
             console.log(error);
